@@ -5,10 +5,12 @@ import Services from './components/Services'
 import Metrics from './components/Metrics'
 import Work from './components/Work'
 import Team from './components/Team'
+import Careers from './components/Careers'
 import CTAContact from './components/CTAContact'
 
 function App() {
   const [contactOpen, setContactOpen] = useState(false)
+  const [applyJob, setApplyJob] = useState(null)
 
   return (
     <div className="min-h-screen bg-white text-slate-900">
@@ -20,6 +22,7 @@ function App() {
         <Metrics />
         <Work />
         <Team />
+        <Careers onApply={(job) => { setApplyJob(job); setContactOpen(true) }} />
 
         {/* About section */}
         <section id="about" className="py-20 bg-slate-50">
@@ -65,7 +68,7 @@ function App() {
               <li><a href="#about" className="hover:underline">About</a></li>
               <li><a href="#team" className="hover:underline">Our team</a></li>
               <li><a href="#careers" className="hover:underline">Careers</a></li>
-              <li><a href="#blog" className="hover:underline">Blog</a></li>
+              <li><span className="text-slate-400">Blog (coming soon)</span></li>
             </ul>
           </div>
           <div>
