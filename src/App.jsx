@@ -1,71 +1,86 @@
+import React, { useState } from 'react'
+import Navbar from './components/Navbar'
+import Hero from './components/Hero'
+import Services from './components/Services'
+import Metrics from './components/Metrics'
+import Work from './components/Work'
+import Team from './components/Team'
+import CTAContact from './components/CTAContact'
+
 function App() {
+  const [contactOpen, setContactOpen] = useState(false)
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
-      {/* Subtle pattern overlay */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.05),transparent_50%)]"></div>
+    <div className="min-h-screen bg-white text-slate-900">
+      <Navbar onContact={() => setContactOpen(true)} />
 
-      <div className="relative min-h-screen flex items-center justify-center p-8">
-        <div className="max-w-2xl w-full">
-          {/* Header with Flames icon */}
-          <div className="text-center mb-12">
-            <div className="inline-flex items-center justify-center mb-6">
-              <img
-                src="/flame-icon.svg"
-                alt="Flames"
-                className="w-24 h-24 drop-shadow-[0_0_25px_rgba(59,130,246,0.5)]"
-              />
+      <main>
+        <Hero onContact={() => setContactOpen(true)} />
+        <Services />
+        <Metrics />
+        <Work />
+        <Team />
+
+        {/* About section */}
+        <section id="about" className="py-20 bg-slate-50">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-10 items-center">
+            <div>
+              <h2 className="text-3xl md:text-4xl font-bold">Strategy-first. Transparent. Collaborative.</h2>
+              <p className="mt-4 text-slate-700">We’ve spent years learning what works so you don’t have to. From discovery and roadmaps to design, build and performance media, we plug in as a seamless extension of your team.</p>
+              <ul className="mt-6 space-y-2 text-slate-700">
+                <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-slate-400" /> UX, SEO and accessibility baked in</li>
+                <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-slate-400" /> Discovery → Strategy → Design → Build → QA</li>
+                <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-slate-400" /> Post-launch support, training and maintenance</li>
+              </ul>
             </div>
-
-            <h1 className="text-5xl font-bold text-white mb-4 tracking-tight">
-              Flames Blue
-            </h1>
-
-            <p className="text-xl text-blue-200 mb-6">
-              Build applications through conversation
-            </p>
-          </div>
-
-          {/* Instructions */}
-          <div className="bg-slate-800/50 backdrop-blur-sm border border-blue-500/20 rounded-2xl p-8 shadow-xl mb-6">
-            <div className="flex items-start gap-4 mb-6">
-              <div className="flex-shrink-0 w-8 h-8 bg-blue-500 text-white rounded-lg flex items-center justify-center font-bold">
-                1
-              </div>
-              <div>
-                <h3 className="font-semibold text-white mb-1">Describe your idea</h3>
-                <p className="text-blue-200/80 text-sm">Use the chat panel on the left to tell the AI what you want to build</p>
-              </div>
-            </div>
-
-            <div className="flex items-start gap-4 mb-6">
-              <div className="flex-shrink-0 w-8 h-8 bg-blue-500 text-white rounded-lg flex items-center justify-center font-bold">
-                2
-              </div>
-              <div>
-                <h3 className="font-semibold text-white mb-1">Watch it build</h3>
-                <p className="text-blue-200/80 text-sm">Your app will appear in this preview as the AI generates the code</p>
-              </div>
-            </div>
-
-            <div className="flex items-start gap-4">
-              <div className="flex-shrink-0 w-8 h-8 bg-blue-500 text-white rounded-lg flex items-center justify-center font-bold">
-                3
-              </div>
-              <div>
-                <h3 className="font-semibold text-white mb-1">Refine and iterate</h3>
-                <p className="text-blue-200/80 text-sm">Continue the conversation to add features and make changes</p>
-              </div>
+            <div className="relative overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+              <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=1600&auto=format&fit=crop" alt="Team collaborating" className="w-full h-80 object-cover" />
             </div>
           </div>
+        </section>
 
-          {/* Footer */}
-          <div className="text-center">
-            <p className="text-sm text-blue-300/60">
-              No coding required • Just describe what you want
-            </p>
+        {/* Contact CTA */}
+        <section id="contact" className="py-20 bg-gradient-to-b from-white to-slate-50">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
+            <h3 className="text-2xl md:text-3xl font-bold">Ready to grow without the guesswork?</h3>
+            <p className="mt-3 text-slate-700">Tell us about your goals. We’ll share how we’d approach them.</p>
+            <div className="mt-6">
+              <button onClick={() => setContactOpen(true)} className="inline-flex items-center rounded-full bg-blue-600 text-white px-6 py-3 font-medium shadow hover:bg-blue-700">Get in touch</button>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      {/* Footer */}
+      <footer className="border-t border-slate-200 bg-white">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10 grid md:grid-cols-3 gap-8">
+          <div>
+            <div className="h-10 w-10 rounded-md bg-blue-600 text-white grid place-items-center font-bold">B9</div>
+            <p className="mt-3 text-sm text-slate-600">Strategy-first digital marketing agency. Brighton, UK.</p>
+            <p className="mt-2 text-sm text-slate-600">Phone: +44 0000 000000</p>
+          </div>
+          <div>
+            <h4 className="font-semibold text-slate-900">Company</h4>
+            <ul className="mt-3 space-y-2 text-sm text-slate-700">
+              <li><a href="#about" className="hover:underline">About</a></li>
+              <li><a href="#team" className="hover:underline">Our team</a></li>
+              <li><a href="#careers" className="hover:underline">Careers</a></li>
+              <li><a href="#blog" className="hover:underline">Blog</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 className="font-semibold text-slate-900">Legal</h4>
+            <ul className="mt-3 space-y-2 text-sm text-slate-700">
+              <li><a href="#" className="hover:underline">Terms & Conditions</a></li>
+              <li><a href="#" className="hover:underline">Privacy Policy</a></li>
+              <li><a href="#" className="hover:underline">Cookie Policy</a></li>
+            </ul>
           </div>
         </div>
-      </div>
+        <div className="py-6 text-center text-xs text-slate-500">© {new Date().getFullYear()} Bamboo Nine – All rights reserved.</div>
+      </footer>
+
+      <CTAContact open={contactOpen} onClose={() => setContactOpen(false)} />
     </div>
   )
 }
